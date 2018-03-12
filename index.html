@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Space Clicker</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	</head>
+	<body>
+		<nav id="menu">
+			<div id="nav-title">
+				<a href="#">Space Clicker</a>
+			</div>
+			<div id="nav-links">
+				<a class="nav-link" id="leaderboards-btn" href="#">Leaderboards</a>
+				<a class="nav-link" id="stats-btn" href="#">Stats</a>
+				<a class="nav-link" id="achievements-btn" href="#">Achievements</a>
+				<a id="settings-icon" href="#"><i class="fa fa-cog fa-2x"></i></a>
+				<div id="nav-links-right">
+					<a class="nav-link-right" id="nav-login-btn" data-localize="menu-login" href="#">Log in</a>
+					/
+					<a class="nav-link-right" id="nav-register-btn" data-localize="menu-signup" href="#">Sign up</a>
+				</div>
+			</div>
+		</nav>
+
+		<div id="login-form">
+			<input type="text" class="form-input" id="login-username" placeholder="Username">
+			<i class="fa fa-user"></i>
+			<input type="password" class="form-input" id="login-password" placeholder="Password">
+			<i class="fa fa-lock"></i><br>
+			<input type="submit" class="base-btn" id="login-btn" value="Login">
+			<a class="close-btn" id="close-login-form" href="#"><i class="fa fa-chevron-up"></i></a>
+		</div>
+
+		<div id="register-form">
+			<input type="text" class="form-input" id="register-mail" placeholder="Email address">
+			<i class="fa fa-envelope" id="envelope-icon"></i>
+			<input type="text" class="form-input" id="register-username" placeholder="Username">
+			<i class="fa fa-user"></i>
+			<input type="password" class="form-input" id="register-password" placeholder="Password">
+			<i class="fa fa-lock"></i><br>
+			<input type="submit" class="base-btn" id="register-btn" value="Register">
+			<a class="close-btn" id="close-register-form" href="#"><i class="fa fa-chevron-up"></i></a>
+		</div>
+
+		<div id="content">
+			<div id="numbers">
+				<div class="value">
+					<img src="img/coin.png" height="32px" width="32px"> 
+					<div class="val" id="ui-coins">0 coins</div>
+				</div>
+				<div class="value">
+					<img src="img/robot.png" height="32px" width="32px"> 
+					<div class="val" id="ui-workers">0 workers</div>
+				</div>
+				<div class="value">
+					<img src="img/idle.png" height="32px" width="32px"> 
+					<div class="val" id="ui-coins-sec">0 coins/s</div>
+				</div>
+				<div class="value">
+					<img src="img/level.png" height="32px" width="32px"> 
+					<div class="val">Level <span id="ui-level"></span></div>
+				</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Dev mode</i>
+				&nbsp;&nbsp;<button class="base-btn" id="btn-dev-1">+100</button>
+				&nbsp;&nbsp;<button class="base-btn" id="btn-dev-2">+100K</button>
+				&nbsp;&nbsp;<button class="base-btn" id="btn-dev-3">+1M</button>
+			</div>
+
+			<div id="shop">
+				<img src="img/online-shop.png" id="shop-img" height="32" width="32">
+				<h2>&nbsp;Shop</h2>
+				<hr>
+				<button class="base-btn shop-btn" id="buy-click-btn">Click</button>
+				<br><br>
+				<button class="base-btn shop-btn" id="buy-worker-btn">Buy worker</button>
+			</div>
+
+			<div id="upgrades">
+				<img src="img/upgrade-icon.png" id="shop-img" height="32" width="32">
+				<h2>&nbsp;Upgrades</h2>
+				<hr>
+				<button class="base-btn shop-btn" id="upgrade-click-btn">Click profit * 2: 0</button>
+				<br><br>
+				<button class="base-btn shop-btn" id="upgrade-workers-btn">Workers efficiency * 2: 0</button>
+			</div>
+
+			<div id="quests">
+				<img src="img/quests.png" id="shop-img" height="32" width="32">
+				<h2>&nbsp;Quests</h2>
+				<hr>
+				<span>No quest available for the moment</span>
+			</div>
+
+			<button id="click-btn">Click</button>
+
+			<p class="xp-bar">
+				<progress id="ui-xp-bar" value="0.5"></progress>
+			</p>
+		</div>
+
+	<!-- Leaderboards modal -->
+		<div class="modal" id="leaderboards-modal">
+			<div class="close-modal"><i class="fa fa-times fa-2x"></i></div>
+			<div class="modal-content">
+				<h2 class="modal-title">Leaderboards</h2>
+				<p>WIP</p>
+			</div>
+		</div>
+
+	<!-- Stats modal -->
+		<div class="modal" id="stats-modal">
+			<div class="close-modal"><i class="fa fa-times fa-2x"></i></div>
+			<div class="modal-content">
+				<h2 class="modal-title">Stats</h2>
+				<p id="ui-total-clicks">Total clicks: 0</p>
+				<p id="ui-total-coins">Total coins: 0</p>
+				<p>WIP</p>
+			</div>
+		</div>
+
+	<!-- Achievements modal -->
+		<div class="modal" id="achievements-modal">
+			<div class="close-modal"><i class="fa fa-times fa-2x"></i></div>
+			<div class="modal-content">
+				<h2 class="modal-title">Achievements</h2>
+				<p>WIP</p>
+			</div>
+		</div>
+
+	<!-- Options modal -->
+		<div class="modal" id="options-modal">
+			<div class="close-modal"><i class="fa fa-times fa-2x"></i></div>
+			<div class="modal-content">
+				<h2 class="modal-title">Options</h2>
+				<p>Language: <img class="flag" id="btn-lang-en" src="img/united-kingdom.png" width="32" height="32"><img class="flag" id="btn-lang-fr" src="img/france.png" width="32" height="32"></p>
+				<br>
+				<input type="file" accept=".json" id="save-select" style="display:none;">
+				<p><input type="checkbox" id="test1" /><label for="test1"><span class="ui"></span><span class="text">Auto-save</span></label></p>
+				<button class="base-btn" id="load-btn"><i class="fa fa-folder-open-o fa-lg"></i>Load</button>
+				<button class="base-btn" id="save-btn"><i class="fa fa-floppy-o fa-lg"></i>Save</button>
+				<button class="base-btn" id="export-btn"><i class="fa fa-file-o fa-lg"></i>Export</button>
+				<p class="p-alert" id="reset-btn">Reset progression</p>
+				<p>Game version: 0</p>
+			</div>
+		</div>
+
+	<!-- Loading animation -->
+		<div id="loading">
+			<ul>
+				<li>L</li>
+				<li>O</li>
+				<li>A</li>
+				<li>D</li>
+				<li>I</li>
+				<li>N</li>
+				<li>G</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.localize.min.js"></script>
+		<script type="text/javascript" src="js/quests-manager.js"></script>
+		<script type="text/javascript" src="js/game-manager.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

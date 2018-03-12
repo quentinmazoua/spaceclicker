@@ -1,0 +1,14 @@
+[
+	{
+		"type":"1",
+		"username": "admin",
+		"mail": "contact@spaceclicker.com",
+		"password": "pass"
+	},
+	{
+		"type":"0",
+		"username": "player",
+		"mail": "player@mail.com",
+		"password": "pass"	
+	} 
+]
