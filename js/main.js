@@ -1,7 +1,8 @@
+var gameManager;
+
 $( document ).ready(function() 
 {
 	gameManager = new Game();
-
 	gameManager.loadLocalSave();
 	loadLang();
 
