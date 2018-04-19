@@ -119,6 +119,22 @@ $( document ).ready(function()
 		notification('info', 'Game saved');
 	});
 
+	$("#export-btn").click(function()
+	{
+		var tempPass = "pass";
+		var data = gameManager.getGameData();
+		var element = document.createElement('a');
+  		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(CryptoJS.AES.encrypt(JSON.stringify(data), tempPass)));
+  		element.setAttribute('download', "space-clicker.sav");
+
+  		element.style.display = 'none';
+  		document.body.appendChild(element);
+
+		element.click();
+
+		document.body.removeChild(element);
+	});
+
 	$("#buy-click-btn").click(function()
 	{
 		gameManager.buyClick();

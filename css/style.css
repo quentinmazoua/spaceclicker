@@ -814,8 +814,72 @@ button:focus
   bottom: 250px;
 }
 
+/*
 .xp-bar progress
 {
   height: 10px;
   width: 500px;
+}
+*/
+
+progress
+{
+  /* turn of styling */
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  /* no default border in FF and Opera */
+  border: none;
+
+  /* Dimensions */
+  width: 400px;
+  height: 20px;
+}
+
+/* Firefox  */ 
+progress  
+{
+   background: #fee;
+   border:1px solid #333;
+}
+
+progress:before 
+{
+  content: attr(data-label);
+  font-size: 0.8em;
+  vertical-align: 0;
+  color: #000;
+  font-family: arial;
+  line-height: 18px;
+  
+  /*Position text over the progress bar */
+  position: absolute;
+  left: 50%;
+  right: 50%;
+}
+
+progress::-moz-progress-bar 
+{
+    background: #f1c40f;
+}
+
+progress:not([value])::-moz-progress-bar 
+{
+  background:#fdd;
+}
+
+/* Chrome */
+progress::-webkit-progress-bar {
+    background: #fee;
+}
+
+progress::-webkit-progress-value 
+{
+    background: #f1c40f;
+}
+
+progress:not([value])::-webkit-progress-bar 
+{
+  background:#fdd;
 }

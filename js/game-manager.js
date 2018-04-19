@@ -34,9 +34,9 @@ var Game = function()
 
 	this.addClickCoins = function()
 	{
-		this.coins += this.clickValue;
-		this.totalCoins += this.clickValue;
-		this.totalClicks++;
+		this.gameData.coins += this.gameData.clickValue;
+		this.gameData.totalCoins += this.gameData.clickValue;
+		this.gameData.totalClicks++;
 	}
 
 	this.updateUI = function()
@@ -219,4 +219,8 @@ var Game = function()
 		this.gameData.playerLevel++;
 	}
 
+	this.getGameData = function()
+	{
+		return this.gameData;
+	}
 }
