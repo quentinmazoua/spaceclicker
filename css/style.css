@@ -16,6 +16,15 @@ body
                                   supported by Chrome and Opera */
 }
 
+img 
+{
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
 #content::-webkit-scrollbar 
 {
   width: 7px;
@@ -216,6 +225,18 @@ nav
 .base-btn:focus
 {
   outline: 0;
+}
+
+#btn-map
+{
+  background-color: #2ecc71;
+  border-color: #27ae60;
+}
+
+.xp-btn
+{
+  background-color: #9b59b6;
+  border-bottom: 4px solid #8e44ad;
 }
 
 #login-btn, #register-btn
@@ -799,6 +820,31 @@ button:focus
 {
   font-family: arial;
   color: #fff;
+}
+
+#middle-panel
+{
+  border-style: solid;
+  border-width: 3px;
+  border-color: #7f8c8d;
+  position: absolute;
+  top: 10%;
+  margin: 0 auto;
+}
+
+#middle-panel-title
+{
+  background-color: #7f8c8d;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px 10px 10px 10px;
+}
+
+#middle-panel-content img
+{
+  height: 410px;
+  width: 700px;
+  padding: 0;
 }
 
 #click-btn img

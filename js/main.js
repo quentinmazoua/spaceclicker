@@ -5,6 +5,8 @@ $( document ).ready(function()
 	gameManager = new Game();
 	gameManager.loadLocalSave();
 	loadLang();
+	$("#middle-panel-title").html('Hangar');
+	$("#middle-panel-content").html('<img draggable="false" src="../img/hangar.jpg"/>');
 
 	start();
 
@@ -103,6 +105,12 @@ $( document ).ready(function()
 		}
 	});
 
+	$("#btn-map").click(function()
+	{
+		$(".modal").hide();
+		$("#map-modal").toggle();
+	});
+
 	$("#click-btn").click(function()
 	{
 		gameManager.addClickCoins();
@@ -178,6 +186,11 @@ $( document ).ready(function()
 	$("#btn-dev-3").click(function()
 	{
 		gameManager.addCoins(1000000);
+	});
+
+	$("#btn-dev-4").click(function()
+	{
+		gameManager.addRequiredXp();
 	});
 
 	$("body").contextmenu(function(e)

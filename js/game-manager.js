@@ -23,8 +23,8 @@ var Game = function()
 		workersUpgradePrice : 50000,
 		clickUpgradeMult : 2,
 		workersUpgradeMult : 2,
-		priceFactor : 1.05,
-		upgradePriceFactor : 1.50,
+		priceFactor : 1.05,             // move
+		upgradePriceFactor : 1.50,		// move
 		autoSave : true,
 		autoSaveFrequency : 30000, // 30s
 		questsManager : undefined
@@ -47,11 +47,13 @@ var Game = function()
 		$("#ui-level").html(this.gameData.playerLevel);
 		$("#ui-total-clicks").html("Total clicks: "+this.formatNumber(this.gameData.totalClicks));
 		$("#ui-total-coins").html("Total coins: "+this.formatNumber(this.gameData.totalCoins));
-		$("#buy-click-btn").html("Buy click: "+this.colorizeNumber(this.gameData.buyClickPrice, this.formatNumber(this.gameData.buyClickPrice))+"<img class='shop-btn-img' src='img/coin.png' width='16' height='16'>");
-		$("#buy-worker-btn").html("Buy worker: "+this.colorizeNumber(this.gameData.buyWorkerPrice, this.formatNumber(this.gameData.buyWorkerPrice))+"<img class='shop-btn-img' src='img/coin.png' width='16' height='16'>");
-		$("#click-btn").html("Click +"+this.formatNumber(this.gameData.clickValue)+"<img src='img/coin.png' width='16' height='16'>");
-		$("#upgrade-click-btn").html("Click profit * 2: "+this.colorizeNumber(this.gameData.clickUpgradePrice, this.formatNumber(this.gameData.clickUpgradePrice))+"<img src='img/coin.png' width='16' height='16'>");
-		$("#upgrade-workers-btn").html("Workers efficiency * 2: "+this.colorizeNumber(this.gameData.workersUpgradePrice, this.formatNumber(this.gameData.workersUpgradePrice))+"<img src='img/coin.png' width='16' height='16'>");
+		$("#buy-click-btn").html("Buy click: "+this.colorizeNumber(this.gameData.buyClickPrice, this.formatNumber(this.gameData.buyClickPrice))+"<img class='shop-btn-img' draggable='false' src='img/coin.png' width='16' height='16'>");
+		$("#buy-worker-btn").html("Buy worker: "+this.colorizeNumber(this.gameData.buyWorkerPrice, this.formatNumber(this.gameData.buyWorkerPrice))+"<img class='shop-btn-img' draggable='false' src='img/coin.png' width='16' height='16'>");
+		$("#click-btn").html("Click +"+this.formatNumber(this.gameData.clickValue)+"<img src='img/coin.png' draggable='false' width='16' height='16'>");
+		$("#upgrade-click-btn").html("Click profit * 2: "+this.colorizeNumber(this.gameData.clickUpgradePrice, this.formatNumber(this.gameData.clickUpgradePrice))+"<img src='img/coin.png' draggable='false' width='16' height='16'>");
+		$("#upgrade-workers-btn").html("Workers efficiency * 2: "+this.colorizeNumber(this.gameData.workersUpgradePrice, this.formatNumber(this.gameData.workersUpgradePrice))+"<img src='img/coin.png' draggable='false' width='16' height='16'>");
+		$("#ui-xp-bar").attr("data-label", this.gameData.playerXp+"/"+this.gameData.xpToNextLevel);
+		$("#ui-xp-bar").attr("value", this.gameData.playerXp/this.gameData.xpToNextLevel);
 	}
 
 	this.save = function()
@@ -209,14 +211,24 @@ var Game = function()
 		if(this.gameData.playerXp >= this.gameData.xpToNextLevel)
 		{
 			this.levelUp();
-			this.gameData.playerXp = this.gameData.playerXp - this.gameData.xpToNextLevel;
-			this.gameData.xpToNextLevel *= this.gameData.xpFactor;
 		}
+	}
+
+	this.addRequiredXp = function()
+	{
+		this.addXp(this.requiredXp());
+	}
+
+	this.requiredXp = function()
+	{
+		return (this.gameData.xpToNextLevel - this.gameData.playerXp);
 	}
 
 	this.levelUp = function()
 	{
 		this.gameData.playerLevel++;
+		this.gameData.playerXp = this.gameData.playerXp - this.gameData.xpToNextLevel;
+		this.gameData.xpToNextLevel = Math.floor(this.gameData.xpToNextLevel * this.gameData.xpFactor);
 	}
 
 	this.getGameData = function()
