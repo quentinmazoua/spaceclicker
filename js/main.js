@@ -111,6 +111,12 @@ $( document ).ready(function()
 		$("#map-modal").toggle();
 	});
 
+	$("#btn-inv").click(function()
+	{
+		$(".modal").hide();
+		$("#inv-modal").toggle();
+	});
+
 	$("#click-btn").click(function()
 	{
 		gameManager.addClickCoins();
